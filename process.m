@@ -1,6 +1,6 @@
 %清空变量，读取图像，并显示其属性
 clear;close all
-src = imread('seal.PNG');
+src = imread('ori.jpg');
 whos,
 
 %显示原始图像
@@ -16,6 +16,7 @@ subplot(2,2,2),imshow(bw),title('bw')
 se = strel('disk',2);
 openbw=imopen(bw,se);
 subplot(2,2,3),imshow(openbw),title('open')
+imwrite(openbw, 'whole_bw.png')
 
 % openbw_rgb = uint8(openbw(:,:,[1 1 1]) * 255)
 [fil, col] = size(openbw);
@@ -27,7 +28,7 @@ for i = 1 : numIter
       openbw_rgb(posX(i),posY(i), 2:3) = 0;
 end % for
 imshow(openbw_rgb),title('openbw rgb')
-imwrite(openbw_rgb, 'seal_red.png')
+imwrite(openbw_rgb, 'whole_red.png')
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %获取连通区域，并进行显示
