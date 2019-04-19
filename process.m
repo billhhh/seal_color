@@ -16,9 +16,9 @@ subplot(2,2,2),imshow(bw),title('bw')
 %运用开操作消去噪点
 se = strel('disk',2);
 openbw=imopen(bw,se);
-openbw = medfilt2(openbw)
-w=fspecial('gaussian',[5 5],5);
-openbw=imfilter(openbw,w);
+openbw = medfilt2(openbw, [7,7])
+% w=fspecial('gaussian',[5 5],5);
+% openbw=imfilter(openbw,w);
 subplot(2,2,3),imshow(openbw),title('open')
 imwrite(openbw, 'ori_bw.png')
 
