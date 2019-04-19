@@ -9,12 +9,16 @@ subplot(2,2,1),imshow(src),title('src')
 
 %用ostu方法获取二值化阈值，进行二值化并进行显示
 level=graythresh(src);
+% level=0.2
 bw=im2bw(src,level);
 subplot(2,2,2),imshow(bw),title('bw')
 
 %运用开操作消去噪点
 se = strel('disk',2);
 openbw=imopen(bw,se);
+openbw = medfilt2(openbw)
+w=fspecial('gaussian',[5 5],5);
+openbw=imfilter(openbw,w);
 subplot(2,2,3),imshow(openbw),title('open')
 imwrite(openbw, 'ori_bw.png')
 
