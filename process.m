@@ -1,6 +1,6 @@
 %清空变量，读取图像，并显示其属性
 clear;close all
-src = imread('ori.jpg');
+src = imread('ori2.jpg');
 whos,
 
 %显示原始图像
@@ -16,7 +16,7 @@ subplot(2,2,2),imshow(bw),title('bw')
 se = strel('disk',2);
 openbw=imopen(bw,se);
 subplot(2,2,3),imshow(openbw),title('open')
-imwrite(openbw, 'whole_bw.png')
+imwrite(openbw, 'ori_bw.png')
 
 % openbw_rgb = uint8(openbw(:,:,[1 1 1]) * 255)
 [fil, col] = size(openbw);
